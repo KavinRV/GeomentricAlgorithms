@@ -41,7 +41,7 @@ class GiftWrap:
                 self.canvas.create_line(self.points[p1][0], self.points[p1][1], self.points[j][0],
                                         self.points[j][1],
                                         fill='#F54748', tags=('red_line', 'line'), dash=(2, 4))
-                time.sleep(0.12)
+                # time.sleep(0.02)
                 self.canvas.update()
                 self.canvas.delete('red_line')
                 if side(self.points[p1], self.points[j], self.points[p2]) < 0:

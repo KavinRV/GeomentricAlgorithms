@@ -43,7 +43,7 @@ class Increment:
                                     self.points[(i + 1) % length][1],
                                     fill='#334756', tags=(f'black_line', 'line'), dash=(6, 4))
             self.canvas.update()
-            time.sleep(0.2)
+            # time.sleep(0.05)
             self.canvas.delete('black_line')
 
         lower_hull = []
@@ -70,7 +70,7 @@ class Increment:
                                     self.points[(i + 1) % length][1],
                                     fill='#334756', tags=(f'black_line', 'line'), dash=(6, 4))
             self.canvas.update()
-            time.sleep(0.2)
+            # time.sleep(0.05)
             self.canvas.delete('black_line')
 
         upper_hull.pop()

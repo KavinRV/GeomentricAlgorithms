@@ -2,6 +2,7 @@ import tkinter as tk
 from giftwrap import GiftWrap
 from increment import Increment
 import random
+from queue import PriorityQueue as pq
 
 # ---------------------------- CONSTANTS ------------------------------- #
 L_PINK = "#EAE7C6"
@@ -13,14 +14,6 @@ FONT_NAME = "Helvetica"
 points = []
 
 # ---------------------------- ALGORITHMS ------------------------------- #
-
-def equalizer(lst):
-    empt = []
-    for i in lst:
-        x = i[0] + 250
-        y = i[1] + 250
-        empt.append((x, y))
-    return empt
 
 
 def get_point(event):
@@ -34,7 +27,7 @@ def rand_gen():
     n = random.randint(150, 240)
     for i in range(n):
         px = random.randint(5, 1495)
-        py = random.randint(5, 1195)
+        py = random.randint(5, 900)
         points.append((px, py))
         canvas.create_rectangle(px - 2, py - 2, px + 2, py + 2, fill=DICE, outline=DICE)
 
@@ -71,7 +64,7 @@ window.geometry('1600x1300')
 window.title("Convex Hull")
 window.config(padx=50, pady=50, bg=PINK)
 
-canvas = tk.Canvas(width=1500, height=1200, bg=L_PINK, highlightthickness=0)
+canvas = tk.Canvas(width=1500, height=950, bg=L_PINK, highlightthickness=0)
 canvas.bind('<Button-1>', get_point)
 canvas.place(x=50, y=50)
 canvas.pack()
