@@ -19,7 +19,7 @@ class GiftWrap:
                 mini = i
             elif self.points[i][0] == self.points[mini][0]:
                 if self.points[i][1] > self.points[mini][1]:
-                    mini = 1
+                    mini = i
         return mini
 
     @property

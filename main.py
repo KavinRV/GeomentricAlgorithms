@@ -2,6 +2,7 @@ import tkinter as tk
 from giftwrap import GiftWrap
 from increment import Increment
 import random
+from graham import Graham
 from queue import PriorityQueue as pq
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -52,6 +53,16 @@ def app_inc():
                            tags='line', outline='#F0A500')
 
 
+def gra_sca():
+    canvas.delete('line')
+    convex = Graham(points, canvas)
+    hull = convex.convex_hull
+    for i in range(len(hull)):
+        # global lines
+        canvas.create_oval(hull[i][0] - 3, hull[i][1] - 3, hull[i][0] + 3, hull[i][1] + 3, fill='#F0A500',
+                           tags='line', outline='#F0A500')
+
+
 def reset():
     global points
     points = []
@@ -79,6 +90,11 @@ incre_button = tk.Button(text="Incremental", highlightbackground=L_PINK, fg=DICE
 incre_button.config(command=app_inc)
 incre_button.place(x=240, y=505)
 
+graham_button = tk.Button(text="Graham Scan", highlightbackground=L_PINK, fg=DICE, highlightthickness=0,
+                          font=FONT_NAME, width=7, height=2)
+graham_button.config(command=gra_sca)
+graham_button.place(x=400, y=505)
+
 reset_button = tk.Button(text="Reset", highlightbackground=L_PINK, fg=DICE, highlightthickness=0,
                          font=FONT_NAME, width=4, height=2)
 reset_button.config(command=reset)
@@ -88,6 +104,7 @@ reset_button = tk.Button(text="Random", highlightbackground=L_PINK, fg=DICE, hig
                          font=FONT_NAME, width=7, height=2)
 reset_button.config(command=rand_gen)
 reset_button.place(x=240, y=550)
+
 
 
 window.mainloop()
