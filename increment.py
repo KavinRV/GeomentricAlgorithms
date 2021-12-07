@@ -1,6 +1,3 @@
-import time
-
-
 class Increment:
     def __init__(self, points, canvas):
         self.points = points
@@ -8,11 +5,22 @@ class Increment:
 
     @staticmethod
     def side(p1, p2, p3):
+        """
+        Whether counter clock wise or clockwise turn
+        :param p1: Point 1
+        :param p2: Point 2
+        :param p3: Point 3
+        :return: ccw > 0 , cw < 0
+        """
         determinant = (p3[0] - p1[0]) * (p2[1] - p1[1]) - (p2[0] - p1[0]) * (p3[1] - p1[1])
         return determinant
 
     @property
     def convex_hull(self):
+        """
+        Computes Convex Hull using incremental approach
+        :return: List containing all vertices of the convex hull
+        """
         self.points.sort()
         length = len(self.points)
         if length < 3:

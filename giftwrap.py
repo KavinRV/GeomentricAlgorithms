@@ -1,5 +1,4 @@
 # import random
-import time
 
 
 def side(p1, p2, p3):
@@ -13,6 +12,10 @@ class GiftWrap:
         self.canvas = canvas
 
     def left_most(self):
+        """
+        Finds the left most point
+        :return: index of left most point
+        """
         mini = 0
         for i in range(1, len(self.points)):
             if self.points[i][0] < self.points[mini][0]:
@@ -24,6 +27,10 @@ class GiftWrap:
 
     @property
     def convex_hull(self):
+        """
+        Compute convex hull using jarvis march method
+        :return: List containing
+        """
         length = len(self.points)
         if length < 3:
             return
@@ -40,7 +47,7 @@ class GiftWrap:
             for j in range(length):
                 self.canvas.create_line(self.points[p1][0], self.points[p1][1], self.points[j][0],
                                         self.points[j][1],
-                                        fill='#F54748', tags=('red_line', 'line'), dash=(2, 4))
+                                        fill='#F54748', tags=('red_line', 'line', 'gift'), dash=(2, 4))
                 # time.sleep(0.02)
                 self.canvas.update()
                 self.canvas.delete('red_line')
@@ -49,12 +56,12 @@ class GiftWrap:
                     self.canvas.delete('black_line')
                     self.canvas.create_line(self.points[p2][0], self.points[p2][1], self.points[p1][0],
                                             self.points[p1][1],
-                                            fill='#334756', tags=('black_line', 'line'), dash=(6, 4))
+                                            fill='#EDEDED', tags=('black_line', 'line', 'gift'), dash=(6, 4))
                     self.canvas.update()
 
             self.canvas.create_line(self.points[p2][0], self.points[p2][1], self.points[p1][0],
                                     self.points[p1][1],
-                                    fill='#66DE93', tags=('green_line', 'line'))
+                                    fill='#66DE93', tags=('green_line', 'line', 'gift'))
             p1 = p2
 
             if p1 == cur:
